@@ -130,4 +130,4 @@ try{
   await browser.close();
 }
 
-// recovery trigger: magnesium publish verification
+// recovery trigger: zinc publish verification
