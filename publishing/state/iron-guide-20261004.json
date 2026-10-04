@@ -1,7 +1,12 @@
 {
-  "phase": "submitting",
+  "phase": "failed",
   "fingerprint": "42e93a2de93a9687f52ab32a87e52b1fdf8f34b2a3ef59b3ff93560aacec4f27",
   "sourceCommit": "503280d77697e0c40130c412d75caa31888554c2",
   "editorialTemplateVersion": "R3",
-  "timestamp": "2026-10-04T14:38:02.626Z"
+  "timestamp": "2026-10-04T14:38:02.626Z",
+  "publicMutationConfirmed": false,
+  "failureStage": "final-submit",
+  "failureCode": "E_TISTORY_DAILY_PUBLISH_LIMIT",
+  "publicCheck": "Tistory alert: 하루에 새롭게 공개 발행할 수 있는 글은 최대 15개; /manage/post.json returned 403; /8 returned 404; homepage latest remained /7",
+  "recoveredAt": "2026-10-04T14:39:03.110Z"
 }
