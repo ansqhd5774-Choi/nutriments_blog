@@ -1,9 +1,41 @@
 {
-  "phase": "submitting",
+  "phase": "updated",
   "fingerprint": "03d01c43854b90e163bcc1685e0dd8d601099616510f733b9a89045945ea606e",
   "url": "https://nutriments.tistory.com/7",
   "articleId": "7",
+  "previousTitle": "아연 하루 권장량·많은 음식·보충제 부작용: 성인 RDA와 40mg 상한",
+  "title": "아연 하루 권장량·많은 음식·보충제 부작용: 성인 RDA와 40mg 상한",
   "sourceCommit": "22f112af3696fa0e46d4471946fab6573d35d0f3",
   "editorialTemplateVersion": "R3",
-  "timestamp": "2026-10-04T13:54:10.110Z"
+  "timestamp": "2026-10-04T13:54:21.266Z",
+  "verification": "anonymous_full_body_editorial_pc_mobile",
+  "ogImage": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FvTTLJ%2FdJMcajcQtvS%2FAAAAAAAAAAAAAAAAAAAAAFDOIsoB90xYwIkRvDH4dvUUO6pKNBsSw7ebQ218nnrn%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3DoOilfNmGYat2ShOFxBmiZlBDxrA%253D",
+  "mobile": {
+    "snapshot": {
+      "h2": 12,
+      "h2Styled": 12,
+      "h3": 2,
+      "h3Styled": 2,
+      "accents": 12,
+      "tables": 2,
+      "tableWraps": 2,
+      "images": 3,
+      "responsiveImages": 3,
+      "nativeImages": 3,
+      "priorityImages": 1,
+      "lazyImages": 2,
+      "highlights": 5,
+      "highlightColors": 4,
+      "quickCards": 1,
+      "faqQ": 3,
+      "faqA": 3,
+      "latest": 1,
+      "summaryBox": true,
+      "relatedCards": 3,
+      "sourcesStyled": true
+    },
+    "og": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FvTTLJ%2FdJMcajcQtvS%2FAAAAAAAAAAAAAAAAAAAAAFDOIsoB90xYwIkRvDH4dvUUO6pKNBsSw7ebQ218nnrn%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3DoOilfNmGYat2ShOFxBmiZlBDxrA%253D",
+    "overflow": false,
+    "wideImages": 0
+  }
 }
