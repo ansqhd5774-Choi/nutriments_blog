@@ -83,6 +83,7 @@ export function eligible(post,state) {
   if (post.status !== 'ready' || !post.approved) return false;
   if (!state) return true;
   if (state.phase === 'published') return false;
+  if (state.phase === 'failed' && state.publicMutationConfirmed === false && state.fingerprint === fingerprint(post)) return true;
   throw new Error('E_EXISTING_PUBLICATION_REQUIRES_REVIEW');
 }
 
