@@ -1,12 +1,7 @@
 {
-  "phase": "failed",
+  "phase": "submitting",
   "fingerprint": "42e93a2de93a9687f52ab32a87e52b1fdf8f34b2a3ef59b3ff93560aacec4f27",
-  "sourceCommit": "ab3f675c843061b628b43947ef3fd94941bd1185",
+  "sourceCommit": "503280d77697e0c40130c412d75caa31888554c2",
   "editorialTemplateVersion": "R3",
-  "timestamp": "2026-10-04T14:29:20.502Z",
-  "publicMutationConfirmed": false,
-  "failureStage": "final-submit",
-  "failureCode": "E_RUNTIME",
-  "publicCheck": "https://nutriments.tistory.com/8 returned 404; homepage latest remained /7",
-  "recoveredAt": "2026-10-04T14:32:05.524Z"
+  "timestamp": "2026-10-04T14:38:02.626Z"
 }
