@@ -65,12 +65,15 @@ export async function verifyPublic(browser,{url,title,targetHtml,expected,prefix
   const context=await browser.newContext(mobile?{viewport:{width:390,height:844},userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1'}:{viewport:{width:1440,height:1000}});
   try{
     const page=await context.newPage();
-    await page.goto(url,{waitUntil:'domcontentloaded'});
-    if(new URL(page.url()).origin!==BLOG)throw new Error(prefix+'_HOST');
     const content=page.locator('.contents_style');
-    try{await content.first().waitFor({state:'attached',timeout:15000});}
-    catch{throw new Error(prefix+'_CONTENT');}
-    if(await content.count()!==1)throw new Error(prefix+'_CONTENT');
+    let hydrated=false;
+    for(let attempt=0;attempt<2;attempt++){
+      await page.goto(url,{waitUntil:'domcontentloaded'});
+      if(new URL(page.url()).origin!==BLOG)throw new Error(prefix+'_HOST');
+      try{await content.first().waitFor({state:'attached',timeout:15000});hydrated=true;break;}
+      catch{if(attempt===0){await page.waitForTimeout(1200);continue;}}
+    }
+    if(!hydrated||await content.count()!==1)throw new Error(prefix+'_CONTENT');
     const body=await page.locator('body').innerText();
     if(!body.includes(title))throw new Error(prefix+'_TITLE');
     const actual=(await content.innerText()).replace(/\s+/g,' ').trim();
