@@ -13,7 +13,7 @@ test('update workflow is isolated and Windows CMD only',()=>{const w=parse(readF
 test('update runtime checkpoints before irreversible submit',()=>{const s=readFileSync(new URL('../publishing/update.mjs',import.meta.url),'utf8');assert.match(s,/assertSourceCurrent\(\)/);assert.match(s,/assertRemoteMain\(checkpointCommit/);assert.ok(s.indexOf("phase:'submitting'")<s.indexOf("stage='final-submit'"));assert.match(s,/waitForAdminListEntry/);assert.match(s,/beforeNumericUrls/);assert.match(s,/addedNumericUrls/);assert.match(s,/E_UPDATE_TARGET_NOT_LISTED/);assert.match(s,/E_UPDATE_CREATED_NEW_URL/);});
 
 test('prepared /4 modernization source satisfies the full R3 authoring contract',()=>{
-  const source=JSON.parse(readFileSync(new URL('../updates/update-4-probiotics-20261004.json',import.meta.url),'utf8'));
+  const source=JSON.parse(readFileSync(new URL('../updates/update-4-probiotics-hero-r4b-20261004.json',import.meta.url),'utf8'));
   assert.equal(source.articleId,'4');
   assert.equal(source.targetUrl,'https://nutriments.tistory.com/4');
   const rendered=renderEditorialPost(source);
