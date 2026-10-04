@@ -53,13 +53,21 @@ export function applyEditorialTemplate(html,{title=''}={}){
 }
 export function assertEditorialContract(renderedHtml,sourceHtml){
   const e=editorialExpectations(sourceHtml); const h2=count(renderedHtml,/<h2\b/g),h3=count(renderedHtml,/<h3\b/g),tables=count(renderedHtml,/<table\b/g),imgs=count(renderedHtml,/<img\b/g),highlights=count(renderedHtml,/<span style="background:linear-gradient\(transparent 45%,#[0-9a-f]{6} 45%\);padding:0 \.06em;">/gi); const colors=new Set([...renderedHtml.matchAll(/linear-gradient\(transparent 45%,(#[0-9a-f]{6}) 45%\)/gi)].map(m=>m[1].toLowerCase()));
+  const eager=count(renderedHtml,/<img\b[^>]*loading="eager"[^>]*fetchpriority="high"[^>]*>/gi), lazy=count(renderedHtml,/<img\b[^>]*loading="lazy"[^>]*>/gi);
+  const q=count(renderedHtml,/>Q\.<\/span>/g), a=count(renderedHtml,/>A\.<\/span>/g);
+  const latest=count(renderedHtml,/<div\b[^>]*background:#fbfcfe;[^>]*>[\s\S]*?최신 근거\s*·?\s*\d{4}[\s\S]*?<\/div>/g);
+  const escaped=BLOG.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  const relatedCards=count(renderedHtml,new RegExp(`<a href="${escaped}\/[^"]+" style="font-weight:800;text-decoration:none;">`,'g'));
   if(h2!==e.h2||count(renderedHtml,/<h2\b[^>]*font-size:26px[^>]*font-weight:800[^>]*>/g)!==e.h2||count(renderedHtml,/width:34px;height:4px;background:#2563eb/g)!==e.h2) throw new Error('E_EDITORIAL_H2_CONTRACT');
   if(h3!==e.h3||count(renderedHtml,/<h3\b[^>]*font-size:20px[^>]*font-weight:800[^>]*>/g)!==e.h3) throw new Error('E_EDITORIAL_H3_CONTRACT');
   if(tables!==e.tables||count(renderedHtml,/<div style="overflow-x:auto;[^"]*"><table\b/g)!==e.tables) throw new Error('E_EDITORIAL_TABLE_CONTRACT');
-  if(imgs!==e.images||count(renderedHtml,/<img\b[^>]*style="[^"]*width:100%;[^"]*max-width:720px;[^"]*"/g)!==e.images) throw new Error('E_EDITORIAL_IMAGE_CONTRACT');
+  if(imgs!==e.images||count(renderedHtml,/<img\b[^>]*style="[^"]*width:100%;[^"]*max-width:720px;[^"]*"/g)!==e.images||eager!==(e.images?1:0)||lazy!==Math.max(0,e.images-1)) throw new Error('E_EDITORIAL_IMAGE_CONTRACT');
   if(highlights!==e.highlights||(e.highlights>=2&&colors.size<2)) throw new Error('E_EDITORIAL_HIGHLIGHT_CONTRACT');
+  if(q!==e.faq||a!==e.faq) throw new Error('E_EDITORIAL_FAQ_CONTRACT');
+  if(latest!==e.latest) throw new Error('E_EDITORIAL_LATEST_CONTRACT');
   if(e.quick&&!/이것만 먼저 보세요<\/p>/.test(renderedHtml)) throw new Error('E_EDITORIAL_QUICK_CONTRACT');
   if(e.summary&&!/핵심 정리<\/h2><div style="margin:0 0 12px;padding:16px 18px;background:#f8fafc;/.test(renderedHtml)) throw new Error('E_EDITORIAL_SUMMARY_CONTRACT');
+  if(e.related&&relatedCards!==e.relatedLinks) throw new Error('E_EDITORIAL_RELATED_CONTRACT');
   if(e.sources&&!/자료 출처<\/h2><ul style="margin:0;padding-left:20px;font-size:14px;/.test(renderedHtml)) throw new Error('E_EDITORIAL_SOURCES_CONTRACT');
   return renderedHtml;
 }

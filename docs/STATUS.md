@@ -32,3 +32,11 @@ Checked: 2026-10-04
 - Pre-submit checkpoint drift guard: IMPLEMENTED (`submitting` commit must be current remote main immediately before final click)
 
 - Public reverify: `/4` current title still matches `expectedCurrentTitle`; `/2` homepage `{{표시 텍스트}} -->` residue still present on 2026-10-04.
+
+## Latest local verification
+- Stubbed JS unit suite: PASS 21/21. This checks project logic but does not replace a real dependency-backed run.
+- Mock-ledger update validation: PASS; 1 prepared `/4` update pending; Editorial R3.
+- Mock-ledger new-post validation: PASS; 0 pending new posts; Editorial R3.
+- Fixed hosted-test portability bug: Windows `C:\tistory-nutriments\profile` is now recognized as an absolute Windows path even when tests run on Ubuntu.
+- Pre-submit Editorial R3 contract now enforces FAQ, latest-evidence module, related links, first image eager/high-priority, and all remaining images lazy before any irreversible click.
+- `/4` image source/license pages reverified on Wikimedia Commons.

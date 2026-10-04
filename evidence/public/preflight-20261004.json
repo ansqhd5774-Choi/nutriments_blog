@@ -22,11 +22,28 @@
     "checkpointRemoteDrift": "IMPLEMENTED",
     "workflowIsolation": "IMPLEMENTED",
     "pnpmFrozenLock": "IMPLEMENTED",
-    "dependencyUnitTests": "BLOCKED_LOCAL_REGISTRY_NETWORK"
+    "dependencyUnitTests": "BLOCKED_LOCAL_REGISTRY_DNS_EAI_AGAIN",
+    "workflowYaml": "PASS",
+    "stubbedUnitTests": "PASS_21_OF_21",
+    "mockLedgerValidateUpdate": "PASS_1_PENDING_R3",
+    "mockLedgerValidateNew": "PASS_0_PENDING_R3",
+    "portableWindowsPathGuard": "PASS_AFTER_FIX",
+    "preSubmitR3FaqLatestRelated": "IMPLEMENTED",
+    "imageLoadingContract": "FIRST_EAGER_REST_LAZY_ENFORCED",
+    "preparedUpdate4R3Render": "PASS",
+    "imageLicensePages": "VERIFIED_WIKIMEDIA_COMMONS"
   },
   "blockers": [
     "GITHUB_REPOSITORY_NOT_CREATED",
+    "WINDOWS_PC_OFFLINE",
     "WINDOWS_RUNNER_NOT_REGISTERED",
-    "DEDICATED_CHROME_LOGIN_NOT_COMPLETED"
-  ]
+    "DEDICATED_CHROME_LOGIN_NOT_COMPLETED",
+    "REAL_DEPENDENCY_TEST_AWAITS_GITHUB_ACTIONS_OR_NETWORK"
+  ],
+  "publicReverified": true,
+  "publicFindings": {
+    "articleCount": 4,
+    "update4ExpectedCurrentTitleMatch": true,
+    "vitaminEHomepageTemplateResidueStillVisible": true
+  }
 }

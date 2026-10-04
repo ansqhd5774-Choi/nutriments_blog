@@ -4,8 +4,10 @@ import { isAbsolute, resolve } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { chromium } from 'playwright-core';
 
+function isAbsolutePortable(value) { return typeof value==='string' && (isAbsolute(value) || /^[A-Za-z]:[\\/]/.test(value)); }
+
 export function assertDedicatedProfile(profileDir) {
-  if (!profileDir || !isAbsolute(profileDir)) throw new Error('E_LOCAL_PROFILE_REQUIRED');
+  if (!profileDir || !isAbsolutePortable(profileDir)) throw new Error('E_LOCAL_PROFILE_REQUIRED');
   const normalized=String(profileDir).replaceAll('\\','/').toLowerCase();
   if (normalized.includes('/google/chrome/user data') || /\/default(?:\/|$)/.test(normalized)) throw new Error('E_LOCAL_PROFILE_REQUIRED');
   if (!normalized.includes('nutriments') || normalized.includes('nhunnhun')) throw new Error('E_PROFILE_NOT_ISOLATED');

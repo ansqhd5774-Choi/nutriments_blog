@@ -44,7 +44,7 @@ export async function editorialSnapshot(content){
     h3:h3.length,h3Styled:h3.filter(x=>/font-size:\s*20px/.test(x.getAttribute('style')||'')&&/font-weight:\s*800/.test(x.getAttribute('style')||'')).length,
     accents:[...root.querySelectorAll('div[aria-hidden="true"]')].filter(x=>/width:\s*34px/.test(x.getAttribute('style')||'')&&/height:\s*4px/.test(x.getAttribute('style')||'')).length,
     tables:tables.length,tableWraps:tables.filter(t=>/overflow-x:\s*auto/.test(t.parentElement?.getAttribute('style')||'')).length,
-    images:images.length,responsiveImages:images.filter(i=>/width:\s*100%/.test(i.getAttribute('style')||'')&&/max-width:\s*720px/.test(i.getAttribute('style')||'')).length,nativeImages:images.filter(i=>i.src.includes('kakaocdn.net')).length,priorityImages:images.filter(i=>i.getAttribute('loading')==='eager'&&i.getAttribute('fetchpriority')==='high').length,
+    images:images.length,responsiveImages:images.filter(i=>/width:\s*100%/.test(i.getAttribute('style')||'')&&/max-width:\s*720px/.test(i.getAttribute('style')||'')).length,nativeImages:images.filter(i=>i.src.includes('kakaocdn.net')).length,priorityImages:images.filter(i=>i.getAttribute('loading')==='eager'&&i.getAttribute('fetchpriority')==='high').length,lazyImages:images.filter(i=>i.getAttribute('loading')==='lazy').length,
     highlights:highlights.length,highlightColors:colors.size,quickCards:[...root.querySelectorAll('p')].filter(p=>/이것만 먼저 보세요$/.test(p.textContent.trim())&&/background:\s*#f7f9fc/.test(p.parentElement?.getAttribute('style')||'')).length,
     faqQ:[...root.querySelectorAll('span')].filter(x=>x.textContent.trim()==='Q.').length,faqA:[...root.querySelectorAll('span')].filter(x=>x.textContent.trim()==='A.').length,
     latest:[...root.querySelectorAll('div')].filter(x=>/최신 근거\s*·?\s*\d{4}/.test(x.textContent)&&/background:\s*#fbfcfe/.test(x.getAttribute('style')||'')).length,
@@ -55,7 +55,7 @@ export function assertSnapshot(s,e,prefix='E_PUBLIC'){
   if(s.h2!==e.h2||s.h2Styled!==e.h2||s.accents!==e.h2)throw new Error(prefix+'_H2');
   if(s.h3!==e.h3||s.h3Styled!==e.h3)throw new Error(prefix+'_H3');
   if(s.tables!==e.tables||s.tableWraps!==e.tables)throw new Error(prefix+'_TABLE');
-  if(s.images!==e.images||s.responsiveImages!==e.images||s.nativeImages<e.images||(e.images&&s.priorityImages<1))throw new Error(prefix+'_IMAGE');
+  if(s.images!==e.images||s.responsiveImages!==e.images||s.nativeImages<e.images||s.priorityImages!==(e.images?1:0)||s.lazyImages!==Math.max(0,e.images-1))throw new Error(prefix+'_IMAGE');
   if(s.highlights!==e.highlights||(e.highlights>=2&&s.highlightColors<2))throw new Error(prefix+'_HIGHLIGHT');
   if(s.quickCards!==e.quick||s.faqQ!==e.faq||s.faqA!==e.faq||s.latest!==e.latest)throw new Error(prefix+'_EDITORIAL');
   if(e.summary&&!s.summaryBox)throw new Error(prefix+'_SUMMARY'); if(e.related&&s.relatedCards!==e.relatedLinks)throw new Error(prefix+'_RELATED'); if(e.sources&&!s.sourcesStyled)throw new Error(prefix+'_SOURCES');

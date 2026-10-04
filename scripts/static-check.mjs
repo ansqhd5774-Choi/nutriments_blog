@@ -27,7 +27,9 @@ for(const [name,s] of [['publish',pub],['update',upd]]){
   if(!s.includes("'pnpm-lock.yaml'"))fail('LOCKFILE_TRIGGER_'+name);
 }
 const editorial=read('publishing/editorial.mjs');
-for(const needle of ["EDITORIAL_TEMPLATE_VERSION='R3'",'font-size:26px','font-size:20px','#fff1a8','#d9f99d','#bfdbfe','#fbcfe8','fetchpriority="high"','loading="lazy"','E_EDITORIAL_IMAGE_MINIMUM','E_EDITORIAL_IMAGE_ALT_REQUIRED'])if(!editorial.includes(needle))fail('EDITORIAL_CONTRACT_'+needle);
+for(const needle of ["EDITORIAL_TEMPLATE_VERSION='R3'",'font-size:26px','font-size:20px','#fff1a8','#d9f99d','#bfdbfe','#fbcfe8','fetchpriority="high"','loading="lazy"','E_EDITORIAL_IMAGE_MINIMUM','E_EDITORIAL_IMAGE_ALT_REQUIRED','E_EDITORIAL_FAQ_CONTRACT','E_EDITORIAL_LATEST_CONTRACT','E_EDITORIAL_RELATED_CONTRACT'])if(!editorial.includes(needle))fail('EDITORIAL_CONTRACT_'+needle);
+const browser=read('publishing/local-browser.mjs');
+if(!browser.includes('isAbsolutePortable'))fail('PORTABLE_WINDOWS_PATH_GUARD');
 const publish=read('publishing/publish.mjs'), update=read('publishing/update.mjs');
 for(const [name,s] of [['publish',publish],['update',update]]){
   if(!s.includes('assertSourceCurrent()'))fail('SOURCE_DRIFT_'+name);

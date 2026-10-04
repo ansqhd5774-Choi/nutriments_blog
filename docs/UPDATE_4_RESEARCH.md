@@ -21,11 +21,11 @@ Target: https://nutriments.tistory.com/4
 - https://www.fda.gov/safety/medical-product-safety-information/risk-invasive-disease-preterm-infants-given-probiotics-formulated-contain-live-bacteria-or-yeast
 
 ## Images / licensing
-1. Yogurt representative: Wikimedia Commons `Vegan yogurt, March 2012.jpg`, CC BY-SA 2.0.
+1. Yogurt representative: Wikimedia Commons `Vegan yogurt, March 2012.jpg`, CC BY-SA 2.0 (license page reverified 2026-10-04).
    Source page: https://commons.wikimedia.org/wiki/File:Vegan_yogurt,_March_2012.jpg
-2. Kefir: Wikimedia Commons `Kefir in a glass.JPG`, CC BY-SA 3.0/GFDL.
+2. Kefir: Wikimedia Commons `Kefir in a glass.JPG`, CC BY-SA 3.0/GFDL (license page reverified 2026-10-04).
    Source page: https://commons.wikimedia.org/wiki/File:Kefir_in_a_glass.JPG
-3. Kimchi: Wikimedia Commons `Korean Gimchi.jpg`, CC BY-SA/GFDL.
+3. Kimchi: Wikimedia Commons `Korean Gimchi.jpg`, CC BY-SA 3.0 (also compatible legacy CC BY-SA/GFDL options shown on the file page; reverified 2026-10-04).
    Source page: https://commons.wikimedia.org/wiki/File:Korean_Gimchi.jpg
 
 No Tistory mutation has been performed. `update.mjs` must still confirm the administrator title and same numeric URL before final submit.
