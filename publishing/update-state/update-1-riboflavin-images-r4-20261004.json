@@ -1,9 +1,41 @@
 {
-  "phase": "submitting",
+  "phase": "updated",
   "fingerprint": "4c21b0570cc1c21e8b6b86335cc7af819ddb8b9d0018ac0cee0ae631caf5f9fe",
   "url": "https://nutriments.tistory.com/1",
   "articleId": "1",
+  "previousTitle": "리보플라빈(B2) 효능·하루 섭취 기준·음식｜결핍과 보충제 주의사항",
+  "title": "리보플라빈(B2) 효능·하루 섭취 기준·음식｜결핍과 보충제 주의사항",
   "sourceCommit": "3ee25566358b1114ca133491714485b6911cf802",
   "editorialTemplateVersion": "R3",
-  "timestamp": "2026-10-04T13:11:32.259Z"
+  "timestamp": "2026-10-04T13:11:44.121Z",
+  "verification": "anonymous_full_body_editorial_pc_mobile",
+  "ogImage": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FzowjN%2FdJMcabFPAkH%2FAAAAAAAAAAAAAAAAAAAAAJR68mshiaCXnzilLQ8oGI9OGmb0AlZyAvjOHI4HmEOg%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3DJ9VhenelT2s%252BtgxXYe2ATqln4Tc%253D",
+  "mobile": {
+    "snapshot": {
+      "h2": 9,
+      "h2Styled": 9,
+      "h3": 2,
+      "h3Styled": 2,
+      "accents": 9,
+      "tables": 2,
+      "tableWraps": 2,
+      "images": 3,
+      "responsiveImages": 3,
+      "nativeImages": 3,
+      "priorityImages": 1,
+      "lazyImages": 2,
+      "highlights": 3,
+      "highlightColors": 3,
+      "quickCards": 1,
+      "faqQ": 4,
+      "faqA": 4,
+      "latest": 1,
+      "summaryBox": true,
+      "relatedCards": 2,
+      "sourcesStyled": true
+    },
+    "og": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FzowjN%2FdJMcabFPAkH%2FAAAAAAAAAAAAAAAAAAAAAJR68mshiaCXnzilLQ8oGI9OGmb0AlZyAvjOHI4HmEOg%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3DJ9VhenelT2s%252BtgxXYe2ATqln4Tc%253D",
+    "overflow": false,
+    "wideImages": 0
+  }
 }
