@@ -9,7 +9,7 @@ permissions:
   contents: read
   actions: read
 jobs:
-  diagnose:
+  diagnose-api:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -24,3 +24,21 @@ jobs:
         run: node publishing/runner-gate.mjs --queue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  probe-base:
+    runs-on: [self-hosted]
+    timeout-minutes: 5
+    steps:
+      - run: echo BASE_SELF_HOSTED_PROBE ${{ runner.name }} ${{ runner.os }} ${{ runner.arch }}
+
+  probe-windows:
+    runs-on: [self-hosted, windows, x64]
+    timeout-minutes: 5
+    steps:
+      - run: echo WINDOWS_X64_PROBE ${{ runner.name }} ${{ runner.os }} ${{ runner.arch }}
+
+  probe-nutriments:
+    runs-on: [self-hosted, windows, x64, nutriments-publisher]
+    timeout-minutes: 5
+    steps:
+      - run: echo NUTRIMENTS_LABEL_PROBE ${{ runner.name }} ${{ runner.os }} ${{ runner.arch }}
