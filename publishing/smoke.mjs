@@ -11,18 +11,34 @@ try {
   await page.getByRole('link',{name:'글쓰기',exact:true}).first().waitFor({state:'visible',timeout:15000});
   const u=new URL(page.url());
   if(u.origin!==BLOG||u.pathname!=='/manage/posts') throw new Error('E_LOGIN_REQUIRED');
+  await page.waitForTimeout(3000);
 
   for(const update of await loadUpdates()){
-    const listEvidence=await page.locator('a').evaluateAll((links,expected)=>{
+    const listEvidence=await page.locator('body').evaluate((body,expected)=>{
       const normalize=v=>(v||'').replace(/\s+/g,' ').trim();
-      const matches=links.filter(a=>normalize(a.textContent)===expected.title);
-      return matches.map(a=>{
-        const container=a.closest('tr,li,[role="row"],article,section,div');
-        const siblingLinks=container?[...container.querySelectorAll('a')].slice(0,12).map(x=>({text:normalize(x.textContent),href:x.getAttribute('href')||''})):[];
-        return {text:normalize(a.textContent),href:a.getAttribute('href')||'',absoluteHref:a.href||'',siblingLinks};
-      });
-    },{title:update.expectedCurrentTitle});
-    console.log(`ADMIN_LIST_EVIDENCE articleId=${update.articleId} ${JSON.stringify(listEvidence)}`);
+      const all=[...body.querySelectorAll('*')];
+      const exact=all.filter(el=>normalize(el.textContent)===expected.title && ![...el.children].some(c=>normalize(c.textContent)===expected.title)).slice(0,20).map(el=>({
+        tag:el.tagName.toLowerCase(),
+        role:el.getAttribute('role')||'',
+        className:typeof el.className==='string'?el.className:'',
+        href:el.getAttribute('href')||'',
+        dataId:el.getAttribute('data-id')||el.getAttribute('data-article-id')||el.getAttribute('data-post-id')||''
+      }));
+      const relevantLinks=[...body.querySelectorAll('a[href]')].filter(a=>{
+        const href=a.getAttribute('href')||'';
+        const text=normalize(a.textContent);
+        return text.includes(expected.keyword)||href.includes(expected.articleId)||href.includes('/manage/newpost/');
+      }).slice(0,40).map(a=>({text:normalize(a.textContent),href:a.getAttribute('href')||'',absoluteHref:a.href||''}));
+      const bodyText=normalize(body.innerText);
+      const index=bodyText.indexOf(expected.title);
+      return {
+        exactTitlePresent:index>=0,
+        exactNodes:exact,
+        relevantLinks,
+        titleContext:index>=0?bodyText.slice(Math.max(0,index-160),index+expected.title.length+160):''
+      };
+    },{title:update.expectedCurrentTitle,articleId:update.articleId,keyword:'유산균'});
+    console.log(`ADMIN_LIST_DOM articleId=${update.articleId} ${JSON.stringify(listEvidence)}`);
 
     const audit=await context.newPage();
     try{
