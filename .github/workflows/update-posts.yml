@@ -29,6 +29,8 @@ concurrency:
 jobs:
   validate-update:
     runs-on: ubuntu-latest
+    outputs:
+      pending: ${{ steps.validate.outputs.pending }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -44,7 +46,8 @@ jobs:
       - run: npm install --global pnpm@11.19.0
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm test
-      - run: pnpm run validate:update
+      - id: validate
+        run: pnpm run validate:update
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   update:
@@ -52,7 +55,7 @@ jobs:
       group: nutriments-tistory-mutation
       cancel-in-progress: false
     needs: validate-update
-    if: vars.NUTRIMENTS_TISTORY_ENABLED == 'true' && github.ref == 'refs/heads/main'
+    if: vars.NUTRIMENTS_TISTORY_ENABLED == 'true' && github.ref == 'refs/heads/main' && needs.validate-update.outputs.pending == '1'
     runs-on: [self-hosted, windows, x64, nutriments-publisher]
     defaults:
       run:
