@@ -1,9 +1,41 @@
 {
-  "phase": "submitting",
+  "phase": "updated",
   "fingerprint": "a76174dfb4d9d5fc2b6b8901b97a688d6684cc5bbf89bb0fd162768180d066bc",
   "url": "https://nutriments.tistory.com/6",
   "articleId": "6",
+  "previousTitle": "마그네슘 하루 권장량·많은 음식·보충제 부작용: RDA와 350mg 상한 구분",
+  "title": "마그네슘 하루 권장량·많은 음식·보충제 부작용: RDA와 350mg 상한 구분",
   "sourceCommit": "6cf2dc66e136f9b9d0c000b94a70a97a98f30ac2",
   "editorialTemplateVersion": "R3",
-  "timestamp": "2026-10-04T13:45:51.799Z"
+  "timestamp": "2026-10-04T13:46:04.562Z",
+  "verification": "anonymous_full_body_editorial_pc_mobile",
+  "ogImage": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FFItsi%2FdJMcaf9fqCm%2FAAAAAAAAAAAAAAAAAAAAAC0tLeaRJErs52Dr6W9fS6dqIIKiGR2hEIVQnrBktCPs%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3DcrqN19JfeJAL5PurE1FHF4ekCEY%253D",
+  "mobile": {
+    "snapshot": {
+      "h2": 11,
+      "h2Styled": 11,
+      "h3": 2,
+      "h3Styled": 2,
+      "accents": 11,
+      "tables": 2,
+      "tableWraps": 2,
+      "images": 3,
+      "responsiveImages": 3,
+      "nativeImages": 3,
+      "priorityImages": 1,
+      "lazyImages": 2,
+      "highlights": 5,
+      "highlightColors": 4,
+      "quickCards": 1,
+      "faqQ": 3,
+      "faqA": 3,
+      "latest": 1,
+      "summaryBox": true,
+      "relatedCards": 3,
+      "sourcesStyled": true
+    },
+    "og": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FFItsi%2FdJMcaf9fqCm%2FAAAAAAAAAAAAAAAAAAAAAC0tLeaRJErs52Dr6W9fS6dqIIKiGR2hEIVQnrBktCPs%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3DcrqN19JfeJAL5PurE1FHF4ekCEY%253D",
+    "overflow": false,
+    "wideImages": 0
+  }
 }
