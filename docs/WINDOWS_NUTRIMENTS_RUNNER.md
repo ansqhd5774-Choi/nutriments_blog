@@ -20,8 +20,8 @@ Run in Windows CMD under the same Windows account that will execute the runner:
 ```cmd
 if not exist C:\tistory-nutriments mkdir C:\tistory-nutriments
 if not exist C:\tistory-nutriments\profile mkdir C:\tistory-nutriments\profile
-setx TISTORY_CHROME_PATH "C:\Program Files\Google\Chrome\Application\chrome.exe"
-setx TISTORY_PROFILE_DIR "C:\tistory-nutriments\profile"
+set "TISTORY_CHROME_PATH=C:\Program Files\Google\Chrome\Application\chrome.exe"
+set "TISTORY_PROFILE_DIR=C:\tistory-nutriments\profile"
 ```
 
 After the repository exists, clone `ansqhd5774-Choi/nutriments_blog` into a Nutriments-only working directory and run `npm install --global pnpm@11.19.0` once if needed, then `pnpm install --frozen-lockfile --ignore-scripts` followed by `pnpm run login`. The user completes Kakao/Tistory authentication directly in the dedicated Chrome window. Password, OTP and CAPTCHA are never automated or copied into chat.

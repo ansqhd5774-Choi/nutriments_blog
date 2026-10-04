@@ -1,16 +1,19 @@
 import { access, mkdir, realpath, stat } from 'node:fs/promises';
 import { constants } from 'node:fs';
-import { isAbsolute, resolve } from 'node:path';
+import { isAbsolute, resolve, relative, win32 } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { chromium } from 'playwright-core';
 
 function isAbsolutePortable(value) { return typeof value==='string' && (isAbsolute(value) || /^[A-Za-z]:[\\/]/.test(value)); }
 
-export function assertDedicatedProfile(profileDir) {
+export function assertDedicatedProfile(profileDir, repositoryDir=process.cwd()) {
   if (!profileDir || !isAbsolutePortable(profileDir)) throw new Error('E_LOCAL_PROFILE_REQUIRED');
   const normalized=String(profileDir).replaceAll('\\','/').toLowerCase();
   if (normalized.includes('/google/chrome/user data') || /\/default(?:\/|$)/.test(normalized)) throw new Error('E_LOCAL_PROFILE_REQUIRED');
   if (!normalized.includes('nutriments') || normalized.includes('nhunnhun')) throw new Error('E_PROFILE_NOT_ISOLATED');
+  const paths = /^[A-Za-z]:[\\/]/.test(profileDir) ? win32 : { resolve, relative, isAbsolute };
+  const fromRepo = paths.relative(paths.resolve(repositoryDir), paths.resolve(profileDir));
+  if (!fromRepo || (!paths.isAbsolute(fromRepo) && fromRepo !== '..' && !fromRepo.startsWith('..\\') && !fromRepo.startsWith('../'))) throw new Error('E_PROFILE_NOT_ISOLATED');
 }
 
 export async function localBrowserConfig(env=process.env) {
