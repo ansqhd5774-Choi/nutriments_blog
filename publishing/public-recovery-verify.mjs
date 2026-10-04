@@ -22,6 +22,21 @@ const targetHtml=renderEditorialPost(update);
 const expected=editorialExpectations(update.bodyHtml);
 const browser=await chromium.launch({headless:true,executablePath});
 try{
+  const diagPage=await browser.newPage({viewport:{width:1440,height:1000}});
+  try{
+    const response=await diagPage.goto(update.targetUrl,{waitUntil:'domcontentloaded',timeout:45000});
+    await diagPage.waitForTimeout(5000);
+    const diag=await diagPage.evaluate(()=>({
+      href:location.href,
+      title:document.title,
+      readyState:document.readyState,
+      contentsStyle:document.querySelectorAll('.contents_style').length,
+      articleUseless:document.querySelectorAll('.tt_article_useless_p_margin').length,
+      bodyText:(document.body?.innerText||'').replace(/\s+/g,' ').trim().slice(0,600),
+      htmlLength:document.documentElement?.outerHTML?.length||0
+    }));
+    console.log('RECOVERY_BROWSER_DIAG '+JSON.stringify({status:response?.status?.()??null,...diag}));
+  }finally{await diagPage.close();}
   const desktop=await verifyPublic(browser,{url:update.targetUrl,title:update.title,targetHtml,expected,prefix:'E_RECOVERY_PUBLIC'});
   const mobile=await verifyPublic(browser,{url:update.targetUrl,title:update.title,targetHtml,expected,prefix:'E_RECOVERY_PUBLIC',mobile:true});
   console.log('RECOVERY_PUBLIC_VERIFY_PASS');
