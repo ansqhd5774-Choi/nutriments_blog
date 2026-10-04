@@ -1,7 +1,40 @@
 {
-  "phase": "submitting",
+  "phase": "published",
   "fingerprint": "bacfbbac5d91f35aaa27ce6010a183f6a3b95e583f3b84bc29a76a7d86deeaa0",
+  "url": "https://nutriments.tistory.com/7",
   "sourceCommit": "936ebeb57205af4bb6f10ad67debbf2c2616a8d9",
   "editorialTemplateVersion": "R3",
-  "timestamp": "2026-10-04T12:49:52.599Z"
+  "timestamp": "2026-10-04T12:53:47.598Z",
+  "verification": "anonymous_full_body_editorial_pc_mobile_recovery",
+  "ogImage": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbVwn9y%2FdJMcadX5zFU%2FAAAAAAAAAAAAAAAAAAAAAC_ZwZ9jjDSN8jcHs90c8PpkVcirPJ8bjFAyUG16yvhC%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3Dt2Q9T8QzAf44MShpmK8kt48hCZg%253D",
+  "mobile": {
+    "snapshot": {
+      "h2": 12,
+      "h2Styled": 12,
+      "h3": 2,
+      "h3Styled": 2,
+      "accents": 12,
+      "tables": 2,
+      "tableWraps": 2,
+      "images": 3,
+      "responsiveImages": 3,
+      "nativeImages": 3,
+      "priorityImages": 1,
+      "lazyImages": 2,
+      "highlights": 5,
+      "highlightColors": 4,
+      "quickCards": 1,
+      "faqQ": 3,
+      "faqA": 3,
+      "latest": 1,
+      "summaryBox": true,
+      "relatedCards": 3,
+      "sourcesStyled": true
+    },
+    "og": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbVwn9y%2FdJMcadX5zFU%2FAAAAAAAAAAAAAAAAAAAAAC_ZwZ9jjDSN8jcHs90c8PpkVcirPJ8bjFAyUG16yvhC%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3Dt2Q9T8QzAf44MShpmK8kt48hCZg%253D",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "overflow": false,
+    "wideImages": 0
+  }
 }
