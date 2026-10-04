@@ -5,6 +5,8 @@ on:
     paths:
       - 'updates/**'
       - 'publishing/update.mjs'
+      - 'publishing/runner-gate.mjs'
+      - 'tests/runner-gate.test.mjs'
       - 'publishing/update-core.mjs'
       - 'publishing/update-ledger.mjs'
       - 'publishing/validate-update.mjs'
@@ -35,6 +37,10 @@ jobs:
         with:
           node-version: '24'
           package-manager-cache: false
+      - name: Diagnose self-hosted allocation
+        run: node publishing/runner-gate.mjs --queue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm install --global pnpm@11.19.0
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm test
@@ -62,6 +68,8 @@ jobs:
         with:
           node-version: '24'
           package-manager-cache: false
+      - name: Runner evidence and source drift Gate A
+        run: node publishing/runner-gate.mjs
       - run: npm install --global pnpm@11.19.0
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm test
