@@ -1,3 +1,4 @@
+import { verificationContext } from './verification-context.mjs';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -62,7 +63,7 @@ export function assertSnapshot(s,e,prefix='E_PUBLIC'){
 }
 export async function verifyPublic(browser,{url,title,targetHtml,expected,prefix='E_PUBLIC',mobile=false}){
   assertArticleUrl(url);
-  const context=await browser.newContext(mobile?{viewport:{width:390,height:844},userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1'}:{viewport:{width:1440,height:1000}});
+  const context=await verificationContext(browser, mobile?{viewport:{width:390,height:844},userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1'}:{viewport:{width:1440,height:1000}});
   try{
     const page=await context.newPage();
     const content=page.locator('.contents_style');

@@ -1,3 +1,4 @@
+import { verificationContext } from './verification-context.mjs';
 import { access, readFile } from 'node:fs/promises';
 import { chromium } from 'playwright-core';
 import { loadUpdates } from './update-core.mjs';
@@ -22,7 +23,7 @@ const targetHtml=renderEditorialPost(update);
 const expected=editorialExpectations(update.bodyHtml);
 
 const browser=await chromium.launch({headless:true,executablePath});
-const context=await browser.newContext({viewport:{width:1440,height:1000}});
+const context=await verificationContext(browser, {viewport:{width:1440,height:1000}});
 try{
   const page=await context.newPage();
   const response=await page.goto(update.targetUrl,{waitUntil:'domcontentloaded',timeout:45000});
