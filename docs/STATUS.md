@@ -1,6 +1,6 @@
 # Build Status
 
-Checked: 2026-10-04
+Checked: 2026-10-04 16:38 KST
 
 - Public baseline inventory: DONE (4 numeric URLs, no mutation)
 - Nutriments hard host isolation: IMPLEMENTED_LOCALLY
@@ -14,9 +14,9 @@ Checked: 2026-10-04
 - Static check: PASS (includes shared mutation concurrency lock, same-URL update guard, active update-source R3 precheck)
 - Node syntax check: PASS
 - Dependency-backed unit tests: BLOCKED_LOCALLY_BY_PACKAGE_REGISTRY_DNS_EAI_AGAIN (static/syntax/workflow-YAML gates PASS; deterministic pnpm lock matches verified nhunnhun baseline)
-- GitHub private repo `ansqhd5774-Choi/nutriments_blog`: NOT_CREATED (reverified 2026-10-04; current connector exposes no repository-create action; CMD helper prepared)
+- GitHub private repo `ansqhd5774-Choi/nutriments_blog`: NOT_CREATED (reverified 2026-10-04 16:38 KST; GitHub connector permission is Allow all actions, but the connector exposes no repository-create action; container has no authenticated `gh` CLI; CMD helper prepared)
 - GitHub main commit/run IDs: NOT_AVAILABLE
-- Windows device check: Desktop Commander device observed Offline; no PC changes made
+- Windows device check: Desktop Commander device observed Offline at 2026-10-04 16:38 KST; no PC changes made
 - Nutriments runner registration: NOT_STARTED (requires repository and live runner token)
 - Dedicated Chrome profile/login: NOT_STARTED (requires Windows PC online/user login)
 - First update `/4`: SOURCE_PREPARED_NOT_EXECUTED (`updates/update-4-probiotics-20261004.json`)
@@ -34,6 +34,7 @@ Checked: 2026-10-04
 - Public reverify: `/4` current title still matches `expectedCurrentTitle`; `/2` homepage `{{표시 텍스트}} -->` residue still present on 2026-10-04.
 
 ## Latest local verification
+- Connection recheck evidence: `evidence/public/connection-check-20261004-1638-kst.json`.
 - Stubbed JS unit suite: PASS 21/21. This checks project logic but does not replace a real dependency-backed run.
 - Mock-ledger update validation: PASS; 1 prepared `/4` update pending; Editorial R3.
 - Mock-ledger new-post validation: PASS; 0 pending new posts; Editorial R3.

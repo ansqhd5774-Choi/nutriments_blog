@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-04T16:38:00+09:00",
+  "repository": "ansqhd5774-Choi/nutriments_blog",
+  "githubPluginPermission": "ALLOW_ALL_ACTIONS",
+  "githubRepository": "NOT_FOUND_404",
+  "windowsDevice": "OFFLINE",
+  "containerGitHubCli": "NOT_INSTALLED",
+  "containerGitHubToken": "ABSENT",
+  "publicBlog": {
+    "url": "https://nutriments.tistory.com/",
+    "articleCountObserved": 4,
+    "update4TitleStillMatchesExpected": true,
+    "vitaminEHomepageTemplateResidueStillVisible": true
+  },
+  "localVerification": {
+    "staticCheck": "PASS",
+    "nodeSyntax": "PASS",
+    "stubbedUnitTests": "PASS_21_OF_21",
+    "mockLedgerValidateUpdate": "PASS_1_PENDING_R3",
+    "mockLedgerValidateNew": "PASS_0_PENDING_R3"
+  },
+  "mutationPerformed": false,
+  "nextExternalGates": [
+    "CREATE_PRIVATE_GITHUB_REPOSITORY",
+    "WINDOWS_PC_ONLINE",
+    "REGISTER_NUTRIMENTS_RUNNER",
+    "DEDICATED_CHROME_LOGIN"
+  ]
+}
