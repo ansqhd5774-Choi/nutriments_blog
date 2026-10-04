@@ -1,0 +1,71 @@
+name: Validate and publish Nutriments Tistory posts
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'posts/**'
+      - 'publishing/publish.mjs'
+      - 'publishing/validate.mjs'
+      - 'publishing/core.mjs'
+      - 'publishing/editorial.mjs'
+      - 'publishing/nutrition-guard.mjs'
+      - 'publishing/ledger.mjs'
+      - 'publishing/local-browser.mjs'
+      - 'publishing/runtime-common.mjs'
+      - 'tests/common.test.mjs'
+      - 'tests/publish.test.mjs'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/publish-posts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nutriments-validation-publish
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+      - run: npm install --global pnpm@11.19.0
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm test
+      - run: pnpm run validate
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  publish:
+    concurrency:
+      group: nutriments-tistory-mutation
+      cancel-in-progress: false
+    needs: validate
+    if: vars.NUTRIMENTS_TISTORY_ENABLED == 'true' && github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, windows, x64, nutriments-publisher]
+    defaults:
+      run:
+        shell: cmd
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+      - run: npm install --global pnpm@11.19.0
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm test
+      - run: pnpm run validate
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: pnpm run publish
+        env:
+          PUBLISH_ENABLED: 'true'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

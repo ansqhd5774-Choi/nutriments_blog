@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-04",
+  "blog": "https://nutriments.tistory.com",
+  "mutationPerformed": false,
+  "publicArticleCountObserved": 4,
+  "numericUrls": [
+    "https://nutriments.tistory.com/1",
+    "https://nutriments.tistory.com/2",
+    "https://nutriments.tistory.com/3",
+    "https://nutriments.tistory.com/4"
+  ],
+  "firstUpdate": {
+    "source": "updates/update-4-probiotics-20261004.json",
+    "targetUrl": "https://nutriments.tistory.com/4",
+    "status": "SOURCE_PREPARED_NOT_EXECUTED"
+  },
+  "gates": {
+    "staticCheck": "PASS",
+    "nodeSyntax": "PASS",
+    "hardHostIsolation": "IMPLEMENTED",
+    "sharedBodySafety": "IMPLEMENTED",
+    "checkpointRemoteDrift": "IMPLEMENTED",
+    "workflowIsolation": "IMPLEMENTED",
+    "pnpmFrozenLock": "IMPLEMENTED",
+    "dependencyUnitTests": "BLOCKED_LOCAL_REGISTRY_NETWORK"
+  },
+  "blockers": [
+    "GITHUB_REPOSITORY_NOT_CREATED",
+    "WINDOWS_RUNNER_NOT_REGISTERED",
+    "DEDICATED_CHROME_LOGIN_NOT_COMPLETED"
+  ]
+}

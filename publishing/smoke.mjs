@@ -1,0 +1,4 @@
+import { BLOG } from './core.mjs';
+import { localBrowserConfig, assertLocalGit, openEditorContext } from './local-browser.mjs';
+let context;
+try{assertLocalGit();context=await openEditorContext(await localBrowserConfig());const page=await context.newPage();await page.goto(`${BLOG}/manage/posts`,{waitUntil:'domcontentloaded',timeout:45000});await page.getByRole('link',{name:'글쓰기',exact:true}).first().waitFor({state:'visible',timeout:15000});const u=new URL(page.url());if(u.origin!==BLOG||u.pathname!=='/manage/posts')throw new Error('E_LOGIN_REQUIRED');console.log('LOCAL_BROWSER_PASS / NUTRIMENTS_LOGIN_PASS / MUTATION_NOT_ATTEMPTED');}catch(error){console.error(/^E_[A-Z_]+$/.test(error?.message??'')?error.message:'E_LOCAL_SMOKE');process.exitCode=1;}finally{try{await context?.close();}catch{process.exitCode=1;}}

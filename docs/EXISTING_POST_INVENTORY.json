@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-10-04",
+  "blog": "https://nutriments.tistory.com",
+  "mutationPerformed": false,
+  "articles": [
+    {
+      "articleId": "1",
+      "url": "https://nutriments.tistory.com/1",
+      "title": "리보플라빈(B2) 하루 권장량·효능 5가지·음식 TOP7·복용 팁",
+      "date": "2025-09-05",
+      "category": "영양 성분",
+      "priority": 3,
+      "representativeImagePublicState": "first body image is kakaocdn; og:image pending",
+      "intent": "riboflavin definition/intake/foods/deficiency/migraine",
+      "issues": [
+        "supplement-dose vs RDA distinction",
+        "broad fatigue/eye/anemia/cataract wording",
+        "medication interaction claim requires correction"
+      ],
+      "manualInternalLinksObserved": false
+    },
+    {
+      "articleId": "2",
+      "url": "https://nutriments.tistory.com/2",
+      "title": "비타민 E 효과·부작용·권장량 총정리",
+      "date": "2025-09-08",
+      "category": "영양 성분",
+      "priority": 2,
+      "representativeImagePublicState": "first body image is kakaocdn; og:image pending",
+      "intent": "vitamin E effects/intake/side effects/foods",
+      "issues": [
+        "RDA and UL mixed as 15-1000 mg recommended range",
+        "visible template/editorial residue",
+        "one-month outcome claims require evidence grading"
+      ],
+      "manualInternalLinksObserved": false
+    },
+    {
+      "articleId": "3",
+      "url": "https://nutriments.tistory.com/3",
+      "title": "비타민D 효능과 하루 권장량, 결핍 증상까지 한 번에 정리!",
+      "date": "2025-11-23",
+      "category": "영양 성분",
+      "priority": 4,
+      "representativeImagePublicState": "first body image is kakaocdn; og:image pending",
+      "intent": "vitamin D intake/deficiency/foods/supplement",
+      "issues": [
+        "25(OH)D cutoffs too definitive",
+        "association vs causation cleanup",
+        "supplement vs deficiency treatment distinction",
+        "brand recommendations"
+      ],
+      "manualInternalLinksObserved": false
+    },
+    {
+      "articleId": "4",
+      "url": "https://nutriments.tistory.com/4",
+      "title": "유산균(프로바이오틱스) 효능·부작용·하루 권장량 완전정리",
+      "date": "2025-11-23",
+      "category": "영양 성분",
+      "priority": 1,
+      "representativeImagePublicState": "first body image is kakaocdn; og:image pending",
+      "intent": "probiotics definition/effects/safety/dosing/foods",
+      "issues": [
+        "no universal RDA/AI for healthy adults",
+        "strain and indication specificity missing",
+        "probiotic deficiency framing inappropriate",
+        "broad disease-prevention claims",
+        "variable food CFU estimates",
+        "brand recommendations"
+      ],
+      "manualInternalLinksObserved": false,
+      "expectedCurrentTitleReverified": true,
+      "currentPublicDoseClaim": "general healthy adults 1-10 billion CFU/day presented as recommendation; modernization required"
+    }
+  ],
+  "reverifiedAt": "2026-10-04",
+  "publicArticleCount": 4,
+  "homepageFindings": [
+    {
+      "articleId": "2",
+      "finding": "visible template residue {{표시 텍스트}} --> remains in homepage listing",
+      "verified": true
+    },
+    {
+      "finding": "public category count remains 영양 성분 (4)",
+      "verified": true
+    }
+  ]
+}

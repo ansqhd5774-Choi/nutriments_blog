@@ -1,0 +1,15 @@
+node_modules/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+coverage/
+# Browser profiles/sessions must never enter the repository.
+profile/
+profiles/
+**/User Data/
+**/Default/
+*.cookie
+*.cookies
+*.session
