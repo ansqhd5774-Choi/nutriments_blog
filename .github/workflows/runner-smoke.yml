@@ -1,0 +1,29 @@
+name: Verify Nutriments runner and saved login
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nutriments-tistory-mutation
+  cancel-in-progress: false
+jobs:
+  smoke:
+    runs-on: [self-hosted, windows, x64, nutriments-publisher]
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: cmd
+    env:
+      TISTORY_CHROME_PATH: C:\Program Files\Google\Chrome\Application\chrome.exe
+      TISTORY_PROFILE_DIR: C:\tistory-nutriments\profile
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - run: npm install --global pnpm@11.19.0
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm run smoke
