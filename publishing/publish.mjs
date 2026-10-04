@@ -11,7 +11,7 @@ let editorContext,publicBrowser,tempDir,editorPage; let stage='configuration';
 try{
   if(process.env.PUBLISH_ENABLED!=='true') console.log('DISABLED: publication is not enabled.');
   else{
-    assertLocalGit(); const ledger=new Ledger(); const queue=[];
+    assertLocalGit(); assertSourceCurrent(); const ledger=new Ledger(); const queue=[];
     for(const post of await loadPosts()){const state=await ledger.read(post.id);if(eligible(post,state))queue.push(checkPublishHtml(post));}
     const post=selectOne(queue,'E_ONE_POST_PER_RUN');
     if(!post) console.log('NO_PENDING_POSTS');

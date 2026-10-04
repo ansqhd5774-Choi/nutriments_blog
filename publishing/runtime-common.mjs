@@ -15,11 +15,29 @@ export async function downloadImage(url,path){
   throw new Error('E_IMAGE_DOWNLOAD_'+last);
 }
 export async function uploadImage(page,sourceUrl,index,tempDir){
-  const path=join(tempDir,`tistory-image-${index}.bin`); await downloadImage(sourceUrl,path);
-  await page.evaluate(()=>document.querySelectorAll('#attach-layer-btn')[0]?.click());
-  const responsePromise=page.waitForResponse(res=>res.url().includes('/manage/post/attach.json')&&res.request().method()==='POST'&&res.status()===200,{timeout:30000});
-  await page.locator('#attach-image').setInputFiles(path); const data=await (await responsePromise).json();
-  if(!data?.url||!data.url.includes('kakaocdn.net'))throw new Error('E_IMAGE_UPLOAD'); return data.url;
+  const path=join(tempDir,`tistory-image-${index}.bin`);
+  await downloadImage(sourceUrl,path);
+  const input=page.locator('#attach-image');
+  if(await input.count()===0){
+    const opened=await page.evaluate(()=>{
+      const button=document.querySelectorAll('#attach-layer-btn')[0];
+      if(!button)return false;
+      button.click();
+      return true;
+    });
+    if(!opened)throw new Error('E_IMAGE_ATTACH_BUTTON');
+    await input.waitFor({state:'attached',timeout:10000});
+  }
+  const responsePromise=page.waitForResponse(res=>res.url().includes('/manage/post/attach.json')&&res.request().method()==='POST',{timeout:30000});
+  try{await input.setInputFiles(path);}catch{throw new Error('E_IMAGE_INPUT');}
+  let response;
+  try{response=await responsePromise;}catch{throw new Error('E_IMAGE_RESPONSE_TIMEOUT');}
+  if(response.status()!==200)throw new Error('E_IMAGE_UPLOAD_HTTP');
+  let data;
+  try{data=await response.json();}catch{throw new Error('E_IMAGE_UPLOAD_RESPONSE');}
+  if(!data?.url||!data.url.includes('kakaocdn.net'))throw new Error('E_IMAGE_UPLOAD');
+  await page.waitForTimeout(400);
+  return data.url;
 }
 export function replaceImageSources(html,mapping,representativeSource){
   let first=true;
