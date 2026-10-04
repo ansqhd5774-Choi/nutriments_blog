@@ -16,6 +16,7 @@ jobs:
     env:
       TISTORY_CHROME_PATH: C:\Program Files\Google\Chrome\Application\chrome.exe
       TISTORY_PROFILE_DIR: C:\tistory-nutriments\profile
+      SMOKE_UPDATE_ID: update-4-probiotics-20261004
     steps:
       - uses: actions/checkout@v5
         with:
