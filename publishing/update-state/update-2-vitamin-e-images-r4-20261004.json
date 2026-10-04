@@ -1,9 +1,41 @@
 {
-  "phase": "submitting",
+  "phase": "updated",
   "fingerprint": "92915b6d540390457aa3215df371a1e424d1c5e9aa895d94c5d1fbdd3e5710de",
   "url": "https://nutriments.tistory.com/2",
   "articleId": "2",
+  "previousTitle": "비타민 E 효능·하루 권장량·많은 음식·부작용: 15mg과 상한 1,000mg 구분",
+  "title": "비타민 E 효능·하루 권장량·많은 음식·부작용: 15mg과 상한 1,000mg 구분",
   "sourceCommit": "36c76d2b6e3e5bbe01f7739e8efb27a75f1fa452",
   "editorialTemplateVersion": "R3",
-  "timestamp": "2026-10-04T13:16:28.244Z"
+  "timestamp": "2026-10-04T13:16:39.440Z",
+  "verification": "anonymous_full_body_editorial_pc_mobile",
+  "ogImage": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fb7GH3x%2FdJMcagf72A6%2FAAAAAAAAAAAAAAAAAAAAAGRxnqR6Xbt4amb_PGNm3ObJB20vjW9-DSJ_1-oeGDjD%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3DO5CF1Dpnq%252Bf6czU7OS9oPdTamUQ%253D",
+  "mobile": {
+    "snapshot": {
+      "h2": 11,
+      "h2Styled": 11,
+      "h3": 2,
+      "h3Styled": 2,
+      "accents": 11,
+      "tables": 2,
+      "tableWraps": 2,
+      "images": 3,
+      "responsiveImages": 3,
+      "nativeImages": 3,
+      "priorityImages": 1,
+      "lazyImages": 2,
+      "highlights": 8,
+      "highlightColors": 4,
+      "quickCards": 1,
+      "faqQ": 3,
+      "faqA": 3,
+      "latest": 1,
+      "summaryBox": true,
+      "relatedCards": 3,
+      "sourcesStyled": true
+    },
+    "og": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fb7GH3x%2FdJMcagf72A6%2FAAAAAAAAAAAAAAAAAAAAAGRxnqR6Xbt4amb_PGNm3ObJB20vjW9-DSJ_1-oeGDjD%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3DO5CF1Dpnq%252Bf6czU7OS9oPdTamUQ%253D",
+    "overflow": false,
+    "wideImages": 0
+  }
 }
