@@ -75,3 +75,5 @@ try{
   await context.close();
   await browser.close();
 }
+
+// recovery trigger: public verification only
