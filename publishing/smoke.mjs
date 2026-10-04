@@ -13,6 +13,17 @@ try {
   if(u.origin!==BLOG||u.pathname!=='/manage/posts') throw new Error('E_LOGIN_REQUIRED');
 
   for(const update of await loadUpdates()){
+    const listEvidence=await page.locator('a').evaluateAll((links,expected)=>{
+      const normalize=v=>(v||'').replace(/\s+/g,' ').trim();
+      const matches=links.filter(a=>normalize(a.textContent)===expected.title);
+      return matches.map(a=>{
+        const container=a.closest('tr,li,[role="row"],article,section,div');
+        const siblingLinks=container?[...container.querySelectorAll('a')].slice(0,12).map(x=>({text:normalize(x.textContent),href:x.getAttribute('href')||''})):[];
+        return {text:normalize(a.textContent),href:a.getAttribute('href')||'',absoluteHref:a.href||'',siblingLinks};
+      });
+    },{title:update.expectedCurrentTitle});
+    console.log(`ADMIN_LIST_EVIDENCE articleId=${update.articleId} ${JSON.stringify(listEvidence)}`);
+
     const audit=await context.newPage();
     try{
       await audit.goto(`${BLOG}/manage/newpost/${update.articleId}`,{waitUntil:'domcontentloaded',timeout:45000});
