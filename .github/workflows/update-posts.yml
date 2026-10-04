@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: main
+          ref: ${{ github.sha }}
       - uses: actions/setup-node@v5
         with:
           node-version: '24'
@@ -46,7 +46,7 @@ jobs:
       group: nutriments-tistory-mutation
       cancel-in-progress: false
     needs: validate-update
-    if: vars.NUTRIMENTS_TISTORY_ENABLED == 'true' && github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
+    if: vars.NUTRIMENTS_TISTORY_ENABLED == 'true' && github.ref == 'refs/heads/main'
     runs-on: [self-hosted, windows, x64, nutriments-publisher]
     defaults:
       run:
@@ -57,7 +57,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: main
+          ref: ${{ github.sha }}
       - uses: actions/setup-node@v5
         with:
           node-version: '24'
