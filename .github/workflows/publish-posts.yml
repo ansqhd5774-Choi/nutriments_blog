@@ -45,7 +45,7 @@ jobs:
       group: nutriments-tistory-mutation
       cancel-in-progress: false
     needs: validate
-    if: vars.NUTRIMENTS_TISTORY_ENABLED == 'true' && github.ref == 'refs/heads/main'
+    if: vars.NUTRIMENTS_TISTORY_ENABLED == 'true' && github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
     runs-on: [self-hosted, windows, x64, nutriments-publisher]
     defaults:
       run:
