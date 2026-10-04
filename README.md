@@ -14,3 +14,7 @@ Active paths:
 - Windows runner setup: `docs/WINDOWS_NUTRIMENTS_RUNNER.md`
 
 Mutation host is fail-closed to `https://nutriments.tistory.com`. Active publisher code must not use Browserbase, TinyFish or Remote Desktop Commander as a publication path.
+
+## AI 작업 인수인계
+Claude/GPT는 [인수인계 시작점](docs/CLAUDE_HANDOFF.md)부터 읽으세요.
+
