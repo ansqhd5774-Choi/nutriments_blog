@@ -1,9 +1,41 @@
 {
-  "phase": "submitting",
+  "phase": "updated",
   "fingerprint": "91febb90f54bc84de4eb3dfed16d6ffa7091294247ba4b3e5d8318bf0d98f908",
   "url": "https://nutriments.tistory.com/5",
   "articleId": "5",
+  "previousTitle": "비타민 C 하루 권장량·효능·많은 음식·부작용: RDA와 상한 2,000mg",
+  "title": "비타민 C 하루 권장량·효능·많은 음식·부작용: RDA와 상한 2,000mg",
   "sourceCommit": "ffdce06265f23e43f9edd68e07e92d19551bbac9",
   "editorialTemplateVersion": "R3",
-  "timestamp": "2026-10-04T14:06:20.095Z"
+  "timestamp": "2026-10-04T14:06:31.040Z",
+  "verification": "anonymous_full_body_editorial_pc_mobile",
+  "ogImage": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbVHB8R%2FdJMcadRb4KL%2FAAAAAAAAAAAAAAAAAAAAAG4pY4zJBCSXGLf-Utr5TAjlabcPvTTSjDrFC3DInzle%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3D0Fo76j8%252BWNlUTr28Mx0KCY7UcBM%253D",
+  "mobile": {
+    "snapshot": {
+      "h2": 10,
+      "h2Styled": 10,
+      "h3": 3,
+      "h3Styled": 3,
+      "accents": 10,
+      "tables": 2,
+      "tableWraps": 2,
+      "images": 3,
+      "responsiveImages": 3,
+      "nativeImages": 3,
+      "priorityImages": 1,
+      "lazyImages": 2,
+      "highlights": 7,
+      "highlightColors": 4,
+      "quickCards": 1,
+      "faqQ": 3,
+      "faqA": 3,
+      "latest": 1,
+      "summaryBox": true,
+      "relatedCards": 3,
+      "sourcesStyled": true
+    },
+    "og": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbVHB8R%2FdJMcadRb4KL%2FAAAAAAAAAAAAAAAAAAAAAG4pY4zJBCSXGLf-Utr5TAjlabcPvTTSjDrFC3DInzle%2Ftfile.bin%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1793458799%26allow_ip%3D%26allow_referer%3D%26signature%3D0Fo76j8%252BWNlUTr28Mx0KCY7UcBM%253D",
+    "overflow": false,
+    "wideImages": 0
+  }
 }
