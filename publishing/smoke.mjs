@@ -1,8 +1,12 @@
+import { mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { BLOG } from './core.mjs';
 import { loadUpdates } from './update-core.mjs';
+import { imageSources, downloadImage } from './runtime-common.mjs';
 import { localBrowserConfig, assertLocalGit, openEditorContext } from './local-browser.mjs';
 
-let context;
+let context,tempDir;
 try {
   assertLocalGit();
   context=await openEditorContext(await localBrowserConfig());
@@ -12,34 +16,9 @@ try {
   const u=new URL(page.url());
   if(u.origin!==BLOG||u.pathname!=='/manage/posts') throw new Error('E_LOGIN_REQUIRED');
   await page.waitForTimeout(3000);
+  tempDir=await mkdtemp(join(tmpdir(),'nutriments-smoke-'));
 
   for(const update of await loadUpdates()){
-    const listEvidence=await page.locator('body').evaluate((body,expected)=>{
-      const normalize=v=>(v||'').replace(/\s+/g,' ').trim();
-      const all=[...body.querySelectorAll('*')];
-      const exact=all.filter(el=>normalize(el.textContent)===expected.title && ![...el.children].some(c=>normalize(c.textContent)===expected.title)).slice(0,20).map(el=>({
-        tag:el.tagName.toLowerCase(),
-        role:el.getAttribute('role')||'',
-        className:typeof el.className==='string'?el.className:'',
-        href:el.getAttribute('href')||'',
-        dataId:el.getAttribute('data-id')||el.getAttribute('data-article-id')||el.getAttribute('data-post-id')||''
-      }));
-      const relevantLinks=[...body.querySelectorAll('a[href]')].filter(a=>{
-        const href=a.getAttribute('href')||'';
-        const text=normalize(a.textContent);
-        return text.includes(expected.keyword)||href.includes(expected.articleId)||href.includes('/manage/newpost/');
-      }).slice(0,40).map(a=>({text:normalize(a.textContent),href:a.getAttribute('href')||'',absoluteHref:a.href||''}));
-      const bodyText=normalize(body.innerText);
-      const index=bodyText.indexOf(expected.title);
-      return {
-        exactTitlePresent:index>=0,
-        exactNodes:exact,
-        relevantLinks,
-        titleContext:index>=0?bodyText.slice(Math.max(0,index-160),index+expected.title.length+160):''
-      };
-    },{title:update.expectedCurrentTitle,articleId:update.articleId,keyword:'유산균'});
-    console.log(`ADMIN_LIST_DOM articleId=${update.articleId} ${JSON.stringify(listEvidence)}`);
-
     const audit=await context.newPage();
     try{
       await audit.goto(`${BLOG}/manage/newpost/${update.articleId}`,{waitUntil:'domcontentloaded',timeout:45000});
@@ -52,12 +31,24 @@ try {
     } finally {
       try{await audit.close();}catch{}
     }
+
+    const sources=[...new Set(imageSources(update.bodyHtml))];
+    for(let i=0;i<sources.length;i++){
+      try{
+        await downloadImage(sources[i],join(tempDir,`image-${i}.bin`));
+        console.log(`IMAGE_DOWNLOAD_PASS index=${i} url=${sources[i]}`);
+      }catch(error){
+        console.log(`IMAGE_DOWNLOAD_FAIL index=${i} url=${sources[i]} code=${error?.message||error}`);
+        throw error;
+      }
+    }
   }
 
-  console.log('LOCAL_BROWSER_PASS / NUTRIMENTS_LOGIN_PASS / TARGET_AUDIT_PASS / MUTATION_NOT_ATTEMPTED');
+  console.log('LOCAL_BROWSER_PASS / NUTRIMENTS_LOGIN_PASS / TARGET_AUDIT_PASS / IMAGE_DOWNLOAD_PASS / MUTATION_NOT_ATTEMPTED');
 }catch(error){
-  console.error(/^E_[A-Z_]+$/.test(error?.message??'')?error.message:'E_LOCAL_SMOKE');
+  console.error(/^E_[A-Z0-9_]+$/.test(error?.message??'')?error.message:'E_LOCAL_SMOKE');
   process.exitCode=1;
 }finally{
   try{await context?.close();}catch{process.exitCode=1;}
+  if(tempDir)try{await rm(tempDir,{recursive:true,force:true});}catch{process.exitCode=1;}
 }
