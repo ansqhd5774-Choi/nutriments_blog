@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="preconnect" href="https://t1.daumcdn.net/" crossorigin>
-<link rel="preconnect" href="https://tistory1.daumcdn.net/" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- SHARED PERFORMANCE R1 20261004 -->
+<link rel="preconnect" href="https://t1.daumcdn.net" crossorigin>
+<link rel="preconnect" href="https://tistory1.daumcdn.net" crossorigin>
+<link rel="preconnect" href="https://edge.daumcdn.net" crossorigin>
+<link rel="preconnect" href="https://t1.kakaocdn.net" crossorigin>
+<link rel="preconnect" href="https://blog.kakaocdn.net" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preload" as="style" href="./style.css">
+
 <link rel="dns-preferch" href="https://t1.daumcdn.net/" crossorigin>
 <link rel="dns-prefetch" href="https://tistory1.daumcdn.net/" crossorigin>
 <link rel="dns-prefetch" href="https://img1.daumcdn.net/" crossorigin>
@@ -13,6 +19,36 @@
 	"menubar.min.js"],LAZY_POST_STYLESHEETS=["lightbox.min.css","comment.css","postBtn.css"],blockedScripts=[],blockedStylesheets=[],blockedScriptContents=[],mutationObserver=new MutationObserver(function(d){d.forEach(function(e){var a=e.addedNodes[0];if(a&&1===a.nodeType)if("SCRIPT"===a.tagName){var c=a.src;c&&ASYNC_SCRIPTS.some(function(b){return c.includes(b)})?a.async=!0:c&&UNWANTED_SCRIPTS.some(function(b){return c.includes(b)})?a.parentNode.removeChild(a):a.textContent&&UNWANTED_SCRIPT_CONTENTS.some(function(b){return a.textContent.includes(b)})?
 	(a.textContent.includes("gtag")&&blockedScriptContents.push(a.cloneNode(!0)),a.parentNode.removeChild(a)):c&&LAZY_POST_SCRIPTS.some(function(b){return c.includes(b)})&&(blockedScripts.push(a.cloneNode(!0)),a.parentNode.removeChild(a))}else"LINK"===a.tagName&&"stylesheet"===a.rel&&a.href&&(LAZY_POST_STYLESHEETS.some(function(b){return a.href.includes(b)})?(blockedStylesheets.push(a.cloneNode(!0)),a.parentNode.removeChild(a)):UNWANTED_STYLESHEETS.some(function(b){return a.href.includes(b)})&&a.parentNode.removeChild(a))})});
 	mutationObserver.observe(document.documentElement,{childList:!0,subtree:!0});
+</script>
+<script id="shared-performance-images-20261004">
+(function(){
+  if(location.pathname!=='/6')return;
+  var seen=new WeakSet();
+  // Live original-image dimensions verified on 2026-10-04; unknown images are untouched.
+  var dimensions={bW7T4l:[640,480],bkYrKJ:[960,638],c9UbsI:[960,708],dAiJab:[637,615],kOURe:[2710,1802],p1OWZ:[800,432]};
+  function optimize(img){
+    if(seen.has(img)||!img.closest('.contents_style')||!img.getAttribute('style')?.includes('max-width:720px'))return;
+    var original=img.getAttribute('src');
+    if(!original||!original.startsWith('https://blog.kakaocdn.net/'))return;
+    var key=original.split('/')[4],size=dimensions[key];
+    if(!size)return;
+    seen.add(img);
+    if(!img.hasAttribute('width'))img.setAttribute('width',size[0]);
+    if(!img.hasAttribute('height'))img.setAttribute('height',size[1]);
+    img.addEventListener('error',function(){img.removeAttribute('srcset');img.removeAttribute('sizes');},{once:true});
+    // src and OG identity remain the native original, preserving publisher verification.
+    img.setAttribute('sizes','(max-width:760px) calc(100vw - 40px), 720px');
+    img.setAttribute('srcset','https://img1.daumcdn.net/thumb/R960x0.fwebp.q85/?fname='+encodeURIComponent(original)+' '+Math.min(size[0],960)+'w');
+  }
+  function scan(node){
+    if(node.nodeType!==1)return;
+    if(node.tagName==='IMG')optimize(node);
+    node.querySelectorAll('img').forEach(optimize);
+  }
+  var observer=new MutationObserver(function(records){records.forEach(function(record){record.addedNodes.forEach(scan);});});
+  observer.observe(document.documentElement,{childList:true,subtree:true});
+  document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.contents_style img').forEach(optimize);observer.disconnect();},{once:true});
+})();
 </script>
 <head>
 <!--메타태그 -->
@@ -32,13 +68,11 @@
 	<link rel="alternate" type="application/rss+xml" title="[##_title_##]" href="[##_rss_url_##]" />
 	<link rel="shortcut icon" href="[##_blog_link_##]favicon.ico" />
 	<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=swap" >
-	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=[##_var_mainFont_##]:wght@400&display=swap">
-	<link rel="preload" as="style" href="./style.css" >
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[##_var_mainFont_##]:wght@400&display=swap" >
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=swap"></noscript>
+
   <link rel="stylesheet" href="./style.css" >
 	<script async>
-		window.jQuery = tjQuery;
+		window.jQuery = window.$ = tjQuery;
 		function loadStylesheet(b){return new Promise(function(c,d){var a=document.createElement("link");a.rel="stylesheet";a.href=b;a.addEventListener("load",c);a.addEventListener("error",d);document.head.appendChild(a)})}function loadScript(b){return new Promise(function(c,d){var a=document.createElement("script");a.src=b;a.addEventListener("load",c);a.addEventListener("error",d);document.head.appendChild(a)})};
 	</script>
 	<style>
@@ -75,6 +109,92 @@
   gtag('config', 'GT-T5JXFQL');
 </script>
 	<!------------------------>
+<style id="zg-critical-desktop-stability-r5">
+@media only screen and (min-width:1023px){
+  html{
+    overflow-y:scroll;
+    scrollbar-gutter:stable;
+  }
+  #wrap,
+  #wrap #container{
+    min-height:100vh;
+  }
+}
+</style>
+<style id="zg-critical-desktop-grid-r4">
+@media only screen and (min-width:1023px){
+  #main.sidebarPosition.left{
+    display:grid !important;
+    grid-template-columns:302px minmax(0,1fr);
+    column-gap:45px;
+    margin:20px;
+    padding-left:0;
+  }
+  #main.sidebarPosition.left > #content{
+    grid-column:2;
+    grid-row:1;
+    min-width:0;
+  }
+  #main.sidebarPosition.left > #sidebar{
+    grid-column:1;
+    grid-row:1;
+    min-width:302px;
+    max-width:302px;
+    margin:0 !important;
+  }
+
+  #main.sidebarPosition.right{
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) 302px;
+    column-gap:45px;
+    margin:20px;
+    padding-left:10px;
+  }
+  #main.sidebarPosition.right > #content{
+    grid-column:1;
+    grid-row:1;
+    min-width:0;
+  }
+  #main.sidebarPosition.right > #sidebar{
+    grid-column:2;
+    grid-row:1;
+    min-width:302px;
+    max-width:302px;
+    margin:0 !important;
+  }
+}
+</style>
+<style id="zg-critical-layout-r3">
+@media only screen and (min-width:1023px){
+  #wrap #container{width:1200px;margin:0 auto;}
+  #main.sidebarPosition.left{
+    display:flex;
+    flex-direction:row-reverse;
+    margin:20px;
+    padding-left:0;
+  }
+  #main.sidebarPosition.right{
+    display:flex;
+    margin:20px;
+    padding-left:10px;
+  }
+  #container #main #content{
+    flex:2.85;
+    overflow:hidden;
+    position:relative;
+  }
+  #container #main #sidebar{
+    flex:1;
+    max-width:302px;
+    min-width:302px;
+    height:fit-content;
+  }
+  #container #main #sidebar.left{margin-left:0;margin-right:45px;}
+  #container #main #sidebar.right{margin-left:45px;margin-right:0;}
+  .h-entry .content-width{max-width:810px;margin:0 auto;}
+}
+</style>
+<style id="shared-performance-system-font">html,body,button,input,select,textarea{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif!important;}.material-icons-outlined{font-family:"Material Icons Outlined";font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;width:1em;max-width:1em;overflow:hidden;-webkit-font-smoothing:antialiased;}</style>
 </head>
 <body id="[##_body_id_##]" class="no-scroll" >
 	<s_t3>
@@ -132,7 +252,7 @@
 			<li><a href="[##_owner_url_##]/post"><span class="material-icons-outlined material-icon">mode_edit_outline</span>글작성</a></li>
 			<li><a href="[##_owner_url_##]"><span class="material-icons-outlined material-icon">settings</span>환경설정</a></li>
 			-->
-			
+
 		</div>
 		<div id="wrap">
 			<div id="container">
@@ -164,10 +284,10 @@
 						<s_article_rep>
 							<section class="h-entry">
 								<div class="content-width">
-								
+
 									<s_index_article_rep>
 										<div class="list_content">
-								
+
 											<div class="index_wrap">													
 												<a href="[##_article_rep_link_##]" class="post_link">
 													<div class="thumnail">
@@ -774,7 +894,7 @@ if(window.wcs) {
 }
 </script>
 	<!--네이버 애널리틱스 -->
-	
+
 </body>
 
 </html>
