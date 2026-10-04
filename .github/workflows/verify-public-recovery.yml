@@ -1,0 +1,26 @@
+name: Verify Nutriments public recovery
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'publishing/public-recovery-verify.mjs'
+      - 'publishing/runtime-common.mjs'
+      - '.github/workflows/verify-public-recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - run: npm install --global pnpm@11.19.0
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: node publishing/public-recovery-verify.mjs
