@@ -6,11 +6,17 @@ import { BLOG, assertArticleUrl } from './core.mjs';
 
 export function imageSources(html){return [...html.matchAll(/<img\b[^>]*\bsrc=(["'])(.*?)\1[^>]*>/gi)].map(m=>m[2]);}
 export async function downloadImage(url,path){
-  let last='';
+  let last='NETWORK';
   for(let attempt=0;attempt<4;attempt++){
-    const response=await fetch(url,{headers:{'User-Agent':'Mozilla/5.0','Accept':'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'},signal:AbortSignal.timeout(20000)});
-    if(response.ok){const type=response.headers.get('content-type')??'';if(!type.toLowerCase().startsWith('image/'))throw new Error('E_IMAGE_CONTENT_TYPE');const bytes=Buffer.from(await response.arrayBuffer());if(!bytes.length||bytes.length>12*1024*1024)throw new Error('E_IMAGE_SIZE');await writeFile(path,bytes);return;}
-    last=String(response.status); await new Promise(r=>setTimeout(r,500));
+    try{
+      const response=await fetch(url,{headers:{'User-Agent':'Mozilla/5.0','Accept':'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'},signal:AbortSignal.timeout(30000)});
+      if(response.ok){const type=response.headers.get('content-type')??'';if(!type.toLowerCase().startsWith('image/'))throw new Error('E_IMAGE_CONTENT_TYPE');const bytes=Buffer.from(await response.arrayBuffer());if(!bytes.length||bytes.length>12*1024*1024)throw new Error('E_IMAGE_SIZE');await writeFile(path,bytes);return;}
+      last=String(response.status);
+    }catch(error){
+      if(/^E_IMAGE_(?:CONTENT_TYPE|SIZE)$/.test(error?.message||''))throw error;
+      last='NETWORK';
+    }
+    await new Promise(r=>setTimeout(r,750*(attempt+1)));
   }
   throw new Error('E_IMAGE_DOWNLOAD_'+last);
 }
