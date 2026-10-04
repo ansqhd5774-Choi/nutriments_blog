@@ -129,3 +129,5 @@ try{
   await context.close();
   await browser.close();
 }
+
+// recovery trigger: magnesium publish verification
