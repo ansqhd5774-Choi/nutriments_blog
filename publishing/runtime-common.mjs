@@ -67,10 +67,12 @@ export async function verifyPublic(browser,{url,title,targetHtml,expected,prefix
     const page=await context.newPage();
     await page.goto(url,{waitUntil:'domcontentloaded'});
     if(new URL(page.url()).origin!==BLOG)throw new Error(prefix+'_HOST');
+    const content=page.locator('.contents_style');
+    try{await content.first().waitFor({state:'attached',timeout:15000});}
+    catch{throw new Error(prefix+'_CONTENT');}
+    if(await content.count()!==1)throw new Error(prefix+'_CONTENT');
     const body=await page.locator('body').innerText();
     if(!body.includes(title))throw new Error(prefix+'_TITLE');
-    const content=page.locator('.contents_style');
-    if(await content.count()!==1)throw new Error(prefix+'_CONTENT');
     const actual=(await content.innerText()).replace(/\s+/g,' ').trim();
     const expectedText=await materializedText(page,targetHtml);
     if(!expectedText||actual!==expectedText)throw new Error(prefix+'_BODY');
