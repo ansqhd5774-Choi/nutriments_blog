@@ -13,3 +13,4 @@ profiles/
 *.cookie
 *.cookies
 *.session
+ops/windows/NUTRIMENTS_CONFIG.local.cmd
