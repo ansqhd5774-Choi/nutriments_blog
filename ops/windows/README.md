@@ -13,6 +13,15 @@ Nutriments 전용 Windows self-hosted runner 운영 파일입니다.
 
 ## 사용
 
+가장 간단한 작업 시작 방법은 `NUTRIMENTS_READY.cmd` 1회 실행입니다.
+
+- PRECHECK 실행
+- Nutriments runner 시작
+- 전용 login helper 실행
+- 사용자가 Tistory/Kakao 로그인을 직접 완료
+- Enter로 사용자 확인 후 READY 표시
+- 비밀번호/OTP/CAPTCHA 자동 입력 없음
+
 1. `NUTRIMENTS_CONFIG.example.cmd`를 로컬에서 `NUTRIMENTS_CONFIG.local.cmd`로 복사합니다.
 2. 새 PC라면 GitHub self-hosted runner를 별도 identity로 등록합니다.
 3. `NUTRIMENTS_PRECHECK.cmd`로 경로를 확인합니다.
